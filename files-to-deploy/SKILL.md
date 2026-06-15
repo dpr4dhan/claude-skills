@@ -51,7 +51,22 @@ For renamed files, only the new (destination) path is included — that's the fi
 
 ## Step 4 — Present the results
 
-Output the file list exactly as returned by git: one path per line, no headers, no labels, no counts. This is the deploy list — keep it clean so it can be copied directly into a deploy script or tool.
+Before the file list, run and display:
+
+```bash
+git remote -v
+git branch --show-current
+```
+
+Show these as context so the user knows exactly which remote and branch they're deploying from:
+
+```
+Remote:  origin  https://github.com/org/repo.git (fetch)
+         origin  https://github.com/org/repo.git (push)
+Branch:  main
+```
+
+Then output the file list exactly as returned by git: one path per line, no headers, no labels, no counts. This is the deploy list — keep it clean so it can be copied directly into a deploy script or tool.
 
 ```
 application/modules/backend/product/controllers/Product.php
