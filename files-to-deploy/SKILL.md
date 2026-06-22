@@ -37,14 +37,16 @@ Based on their choice:
 
 Use `--name-only` to get a plain list of file paths — no status letters, no decoration. Deleted files are excluded via `--diff-filter=ACMR` since they don't need to be uploaded.
 
+**Always use `<start_commit>^` (the parent) as the starting point** so that files changed *in* the starting commit itself are included in the output.
+
 **Option A (two commits):**
 ```bash
-git diff --name-only --diff-filter=ACMR <start_commit> <end_commit>
+git diff --name-only --diff-filter=ACMR <start_commit>^ <end_commit>
 ```
 
 **Option B (commit to HEAD):**
 ```bash
-git diff --name-only --diff-filter=ACMR <start_commit> HEAD
+git diff --name-only --diff-filter=ACMR <start_commit>^ HEAD
 ```
 
 For renamed files, only the new (destination) path is included — that's the file that needs to be deployed.
